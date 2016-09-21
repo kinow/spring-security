@@ -299,7 +299,7 @@ NOTE: This example uses Gradle 1.9, but may need modifications to work in future
 
 [[modules]]
 ==== Project Modules
-In Spring Security 3.0, the codebase has been sub-divided into separate jars which more clearly separate different functionaltiy areas and third-party dependencies. If you are using Maven to build your project, then these are the modules you will add to your `pom.xml`. Even if you're not using Maven, we'd recommend that you consult the `pom.xml` files to get an idea of third-party dependencies and versions. Alternatively, a good idea is to examine the libraries that are included in the sample applications.
+In Spring Security 3.0, the codebase has been sub-divided into separate jars which more clearly separate different functionality areas and third-party dependencies. If you are using Maven to build your project, then these are the modules you will add to your `pom.xml`. Even if you're not using Maven, we'd recommend that you consult the `pom.xml` files to get an idea of third-party dependencies and versions. Alternatively, a good idea is to examine the libraries that are included in the sample applications.
 
 
 [[spring-security-core]]
@@ -320,7 +320,7 @@ Contains core authentication and access-contol classes and interfaces, remoting 
 
 [[spring-security-remoting]]
 ===== Remoting - spring-security-remoting.jar
-Provides intergration with Spring Remoting. You don't need this unless you are writing a remote client which uses Spring Remoting. The main package is `org.springframework.security.remoting`.
+Provides integration with Spring Remoting. You don't need this unless you are writing a remote client which uses Spring Remoting. The main package is `org.springframework.security.remoting`.
 
 
 [[spring-security-web]]
@@ -688,7 +688,7 @@ protected void configure(HttpSecurity http) throws Exception {
 
 <1> There are multiple children to the `http.authorizeRequests()` method each matcher is considered in the order they were declared.
 <2> We specified multiple URL patterns that any user can access. Specifically, any user can access a request if the URL starts with "/resources/", equals "/signup", or equals "/about".
-<3> Any URL that starts with "/admin/" will be resticted to users who have the role "ROLE_ADMIN". You will notice that since we are invoking the `hasRole` method we do not need to specify the "ROLE_" prefix.
+<3> Any URL that starts with "/admin/" will be restricted to users who have the role "ROLE_ADMIN". You will notice that since we are invoking the `hasRole` method we do not need to specify the "ROLE_" prefix.
 <4> Any URL that starts with "/db/" requires the user to have both "ROLE_ADMIN" and "ROLE_DBA". You will notice that since we are using the `hasRole` expression we do not need to specify the "ROLE_" prefix.
 <5> Any URL that has not already been matched on only requires that the user be authenticated
 
@@ -823,7 +823,7 @@ public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception 
 [[jc-authentication-jdbc]]
 ==== JDBC Authentication
 
-You can find the updates to suppport JDBC based authentication. The example below assumes that you have already defined a `DataSource` within your application. The https://github.com/spring-projects/spring-security/tree/master/samples/javaconfig/jdbc[jdbc-javaconfig] sample provides a complete example of using JDBC based authentication.
+You can find the updates to support JDBC based authentication. The example below assumes that you have already defined a `DataSource` within your application. The https://github.com/spring-projects/spring-security/tree/master/samples/javaconfig/jdbc[jdbc-javaconfig] sample provides a complete example of using JDBC based authentication.
 
 [source,java]
 ----
@@ -1093,7 +1093,7 @@ For additional information about methods that can be overriden, refer to the `Gl
 
 === Post Processing Configured Objects
 
-Spring Security's Java Configuration does not expose every property of every object that it configures. This simplifies the configuration for a majority of users. Afterall, if every property was exposed, users could use standard bean configuration.
+Spring Security's Java Configuration does not expose every property of every object that it configures. This simplifies the configuration for a majority of users. After all, if every property was exposed, users could use standard bean configuration.
 
 While there are good reasons to not directly expose every property, users may still need more advanced configuration options. To address this Spring Security introduces the concept of an `ObjectPostProcessor` which can used to modify or replace many of the Object instances created by the Java Configuration. For example, if you wanted to configure the `filterSecurityPublishAuthorizationSuccess` property on `FilterSecurityInterceptor` you could use the following:
 
@@ -3047,7 +3047,7 @@ Digest Authentication's RFC offers a range of additional features to further inc
 === Overview
 Remember-me or persistent-login authentication refers to web sites being able to remember the identity of a principal between sessions. This is typically accomplished by sending a cookie to the browser, with the cookie being detected during future sessions and causing automated login to take place. Spring Security provides the necessary hooks for these operations to take place, and has two concrete remember-me implementations. One uses hashing to preserve the security of cookie-based tokens and the other uses a database or other persistent storage mechanism to store the generated tokens.
 
-Note that both implemementations require a `UserDetailsService`. If you are using an authentication provider which doesn't use a `UserDetailsService` (for example, the LDAP provider) then it won't work unless you also have a `UserDetailsService` bean in your application context.
+Note that both implementations require a `UserDetailsService`. If you are using an authentication provider which doesn't use a `UserDetailsService` (for example, the LDAP provider) then it won't work unless you also have a `UserDetailsService` bean in your application context.
 
 
 [[remember-me-hash-token]]
@@ -3081,7 +3081,7 @@ The `UserDetailsService` will normally be selected automatically. If you have mo
 
 [[remember-me-persistent-token]]
 === Persistent Token Approach
-This approach is based on the article http://jaspan.com/improved_persistent_login_cookie_best_practice[http://jaspan.com/improved_persistent_login_cookie_best_practice] with some minor modifications  footnote:[Essentially, the username is not included in the cookie, to prevent exposing a valid login name unecessarily. There is a discussion on this in the comments section of this article.]. To use the this approach with namespace configuration, you would supply a datasource reference:
+This approach is based on the article http://jaspan.com/improved_persistent_login_cookie_best_practice[http://jaspan.com/improved_persistent_login_cookie_best_practice] with some minor modifications  footnote:[Essentially, the username is not included in the cookie, to prevent exposing a valid login name unnecessarily. There is a discussion on this in the comments section of this article.]. To use the this approach with namespace configuration, you would supply a datasource reference:
 
 [source,xml]
 ----
@@ -3509,7 +3509,7 @@ Before you integrate Spring Security's CSRF protection with multipart file uploa
 
 [[csrf-multipartfilter]]
 ===== Placing MultipartFilter before Spring Security
-The first option is to ensure that the `MultipartFilter` is specified before the Spring Security filter. Specifying the `MultipartFilter` before the Spring Security filter means that there is no authorization for invoking the `MultipartFilter` which means anyone can place temporary files on your server. However, only authorized users will be able to submit a File that is processed by your application. In general, this is the recommended approach because the temporary file upload should have a negligble impact on most servers.
+The first option is to ensure that the `MultipartFilter` is specified before the Spring Security filter. Specifying the `MultipartFilter` before the Spring Security filter means that there is no authorization for invoking the `MultipartFilter` which means anyone can place temporary files on your server. However, only authorized users will be able to submit a File that is processed by your application. In general, this is the recommended approach because the temporary file upload should have a negligible impact on most servers.
 
 To ensure `MultipartFilter` is specified before the Spring Security filter with java configuration, users can override beforeSpringSecurityFilterChain as shown below:
 
@@ -3548,14 +3548,14 @@ To ensure `MultipartFilter` is specified before the Spring Security filter with 
 
 [[csrf-include-csrf-token-in-action]]
 ===== Include CSRF token in action
-If allowing unauthorized users to upload temporariy files is not acceptable, an alternative is to place the `MultipartFilter` after the Spring Security filter and include the CSRF as a query parameter in the action attribute of the form. An example with a jsp is shown below
+If allowing unauthorized users to upload temporarily files is not acceptable, an alternative is to place the `MultipartFilter` after the Spring Security filter and include the CSRF as a query parameter in the action attribute of the form. An example with a jsp is shown below
 
 [source,xml]
 ----
 <form action="./upload?${_csrf.parameterName}=${_csrf.token}" method="post" enctype="multipart/form-data">
 ----
 
-The disadvantage to this approach is that query parameters can be leaked. More genearlly, it is considered best practice to place sensitive data within the body or headers to ensure it is not leaked. Additional information can be found in http://www.w3.org/Protocols/rfc2616/rfc2616-sec15.html#sec15.1.3[RFC 2616 Section 15.1.3 Encoding Sensitive Information in URI's].
+The disadvantage to this approach is that query parameters can be leaked. More generally, it is considered best practice to place sensitive data within the body or headers to ensure it is not leaked. Additional information can be found in http://www.w3.org/Protocols/rfc2616/rfc2616-sec15.html#sec15.1.3[RFC 2616 Section 15.1.3 Encoding Sensitive Information in URI's].
 
 ==== HiddenHttpMethodFilter
 The HiddenHttpMethodFilter should be placed before the Spring Security filter. In general this is true, but it could have additional implications when protecting against CSRF attacks.
@@ -4429,7 +4429,7 @@ protected void configure(HttpSecurity http) throws Exception {
 
 [[session-mgmt]]
 == Session Management
-HTTP session related functonality is handled by a combination of the `SessionManagementFilter` and the `SessionAuthenticationStrategy` interface, which the filter delegates to. Typical usage includes session-fixation protection attack prevention, detection of session timeouts and restrictions on how many sessions an authenticated user may have open concurrently.
+HTTP session related functionality is handled by a combination of the `SessionManagementFilter` and the `SessionAuthenticationStrategy` interface, which the filter delegates to. Typical usage includes session-fixation protection attack prevention, detection of session timeouts and restrictions on how many sessions an authenticated user may have open concurrently.
 
 
 === SessionManagementFilter
@@ -4770,7 +4770,7 @@ The use of a role-hierarchy allows you to configure which roles (or authorities)
 </bean>
 ----
 
-Here we have four roles in a hierarchy `ROLE_ADMIN => ROLE_STAFF => ROLE_USER => ROLE_GUEST`. A user who is authenticated with `ROLE_ADMIN`, will behave as if they have all four roles when security contraints are evaluated against an `AccessDecisionManager` cconfigured with the above `RoleHierarchyVoter`. The `>` symbol can be thought of as meaning "includes".
+Here we have four roles in a hierarchy `ROLE_ADMIN => ROLE_STAFF => ROLE_USER => ROLE_GUEST`. A user who is authenticated with `ROLE_ADMIN`, will behave as if they have all four roles when security constraints are evaluated against an `AccessDecisionManager` configured with the above `RoleHierarchyVoter`. The `>` symbol can be thought of as meaning "includes".
 
 Role hierarchies offer a convenient means of simplifying the access-control configuration data for your application and/or reducing the number of authorities which you need to assign to a user. For more complex requirements you may wish to define a logical mapping between the specific access-rights your application requires and the roles that are assigned to users, translating between the two when loading the user information.
 
@@ -4994,7 +4994,7 @@ So if you aren't using the namespace and want to use expressions, you will have 
 ==== Referring to Beans in Web Security Expressions
 
 If you wish to extend the expressions that are available, you can easily refer to any Spring Bean you expose.
-For example, assumming you have a Bean with the name of `webSecurity` that contains the following method signature:
+For example, assuming you have a Bean with the name of `webSecurity` that contains the following method signature:
 
 [source,java]
 ----
@@ -5099,7 +5099,7 @@ which means that access will only be allowed for users with the role "ROLE_USER"
 public void deletePermission(Contact contact, Sid recipient, Permission permission);
 ----
 
-Here we're actually using a method argument as part of the expression to decide whether the current user has the "admin"permission for the given contact. The built-in `hasPermission()` expression is linked into the Spring Security ACL module through the application context, as we'll<<el-permission-evaluator,see below>>. You can access any of the method arguments by name as expression variables.
+Here we're actually using a method argument as part of the expression to decide whether the current user has the "admin"permission for the given contact. The built-in `hasPermission()` expression is linked into the Spring Security ACL module through the application context, as we'll <<el-permission-evaluator,see below>>. You can access any of the method arguments by name as expression variables.
 
 There are a number of ways in which Spring Security can resolve the method arguments. Spring Security uses `DefaultSecurityParameterNameDiscoverer` to discover the parameter names. By default, the following options are tried for a method as a whole.
 
@@ -5723,7 +5723,7 @@ This content will only be visible to users who have the "supervisor" authority i
 </sec:authorize>
 ----
 
-When used in conjuction with Spring Security's PermissionEvaluator, the tag can also be used to check permissions. For example:
+When used in conjunction with Spring Security's PermissionEvaluator, the tag can also be used to check permissions. For example:
 
 [source,xml]
 ----
@@ -5908,7 +5908,7 @@ In order to make it easy to inject a `Configuration` into `DefaultJaasAuthentica
 
 [[jaas-djap-config]]
 ==== DefaultJaasAuthenticationProvider Example Configuration
-While the Spring configuration for `InMemoryConfiguration` can be more verbose than the standarad JAAS configuration files, using it in conjuction with `DefaultJaasAuthenticationProvider` is more flexible than `JaasAuthenticationProvider` since it not dependant on the default `Configuration` implementation.
+While the Spring configuration for `InMemoryConfiguration` can be more verbose than the standard JAAS configuration files, using it in conjunction with `DefaultJaasAuthenticationProvider` is more flexible than `JaasAuthenticationProvider` since it not dependent on the default `Configuration` implementation.
 
 An example configuration of `DefaultJaasAuthenticationProvider` using `InMemoryConfiguration` is provided below. Note that custom implementations of `Configuration` can easily be injected into `DefaultJaasAuthenticationProvider` as well.
 
@@ -6051,7 +6051,7 @@ It's good that you're still here! Let's now look at how this is configured
 
 [[cas-client]]
 === Configuration of CAS Client
-The web application side of CAS is made easy due to Spring Security. It is assumed you already know the basics of using Spring Security, so these are not covered again below. We'll assume a namespace based configuration is being used and add in the CAS beans as required. Each section builds upon the previous section. A full<<cas-sample,CAS sample application>> can be found in the Spring Security Samples.
+The web application side of CAS is made easy due to Spring Security. It is assumed you already know the basics of using Spring Security, so these are not covered again below. We'll assume a namespace based configuration is being used and add in the CAS beans as required. Each section builds upon the previous section. A full <<cas-sample,CAS sample application>> can be found in the Spring Security Samples.
 
 
 [[cas-st]]
@@ -6167,7 +6167,7 @@ It might be confusing why both the `logout` element and the `singleLogoutFilter`
 * The user requests `/logout` which would log the user out of the local application and send the user to the logout success page.
 * The logout success page, `/cas-logout.jsp`, should instruct the user to click a link pointing to `/logout/cas` in order to logout out of all applications.
 * When the user clicks the link, the user is redirected to the CAS single logout URL (https://localhost:9443/cas/logout).
-* On the CAS Server side, the CAS single logout URL then submits single logout requests to all the CAS Services. On the CAS Service side, JASIG's `SingleSignOutFilter` processes the logout request by invaliditing the original session.
+* On the CAS Server side, the CAS single logout URL then submits single logout requests to all the CAS Services. On the CAS Service side, JASIG's `SingleSignOutFilter` processes the logout request by invalidating the original session.
 
 
 
@@ -6282,7 +6282,7 @@ Because remoting protocols have no way of presenting themselves within the conte
 
 One obvious option is to not use CAS at all for remoting protocol clients. However, this would eliminate many of the desirable features of CAS. As a middle-ground, the `CasAuthenticationProvider` uses a `StatelessTicketCache`. This is used solely for stateless clients which use a principal equal to `CasAuthenticationFilter.CAS_STATELESS_IDENTIFIER`. What happens is the `CasAuthenticationProvider` will store the resulting `CasAuthenticationToken` in the `StatelessTicketCache`, keyed on the proxy ticket. Accordingly, remoting protocol clients can present the same proxy ticket and the `CasAuthenticationProvider` will not need to contact the CAS server for validation (aside from the first request). Once authenticated, the proxy ticket could be used for URLs other than the original target service.
 
-This section builds upon the previous sections to accomodate proxy ticket authentication. The first step is to specify to authenticate all artifacts as shown below.
+This section builds upon the previous sections to accommodate proxy ticket authentication. The first step is to specify to authenticate all artifacts as shown below.
 
 [source,xml]
 ----
@@ -6348,7 +6348,7 @@ You will also need to update the `CasAuthenticationProvider` to handle proxy tic
 
 [[x509-overview]]
 === Overview
-The most common use of X.509 certificate authentication is in verifying the identity of a server when using SSL, most commonly when using HTTPS from a browser. The browser will automatically check that the certificate presented by a server has been issued (ie digitally signed) by one of a list of trusted certificate authorities which it maintains.
+The most common use of X.509 certificate authentication is in verifying the identity of a server when using SSL, most commonly when using HTTPS from a browser. The browser will automatically check that the certificate presented by a server has been issued (i.e. digitally signed) by one of a list of trusted certificate authorities which it maintains.
 
 You can also use SSL with "mutual authentication"; the server will then request a valid certificate from the client as part of the SSL handshake. The server will authenticate the client by checking that its certificate is signed by an acceptable authority. If a valid certificate has been provided, it can be obtained through the servlet API in an application. Spring Security X.509 module extracts the certificate using a filter. It maps the certificate to an application user and loads that user's set of granted authorities for use with the standard Spring Security infrastructure.
 
@@ -6825,7 +6825,7 @@ public ModelAndView findMessagesForUser() {
 	SecurityContextHolder.getContext().getAuthentication();
 	CustomUser custom = (CustomUser) authentication == null ? null : authentication.getPrincipal();
 
-	// .. find messags for this user and return them ...
+	// .. find messages for this user and return them ...
 }
 ----
 
@@ -7047,7 +7047,7 @@ By exposing the `SecurityEvaluationContextExtension` bean, all of the <<common-e
 
 [[appendix-schema]]
 == Security Database Schema
-There are various database schema used by the framework and this appendix provides a single reference point to them all. You only need to provide the tables for the areas of functonality you require.
+There are various database schema used by the framework and this appendix provides a single reference point to them all. You only need to provide the tables for the areas of functionality you require.
 
 DDL statements are given for the HSQLDB database. You can use these as a guideline for defining the schema for the database you are using.
 
@@ -7835,7 +7835,7 @@ Do not include the header for http://en.wikipedia.org/wiki/Cross-site_scripting#
 
 [[nsa-xss-protection-enabled]]
 * **xss-protection-enabled**
-Explicitly enable or eisable http://en.wikipedia.org/wiki/Cross-site_scripting#Non-Persistent[reflected / Type-1 Cross-Site Scripting (XSS)] protection.
+Explicitly enable or disable http://en.wikipedia.org/wiki/Cross-site_scripting#Non-Persistent[reflected / Type-1 Cross-Site Scripting (XSS)] protection.
 
 
 [[nsa-xss-protection-block]]
@@ -9205,7 +9205,7 @@ An external `MethodSecurityMetadataSource` instance can be supplied which will t
 * **mode**
 This attribute can be set to "aspectj" to specify that AspectJ should be used instead of the default Spring AOP. Secured methods must be woven with the `AnnotationSecurityAspect` from the `spring-security-aspects` module.
 
-It is important to note that AspectJ follows Java's rule that annotations on interfaces are not inherited. This means that methods that define the Security annotaitons on the interface will not be secured. Instead, you must place the Security annotation on the class when using AspectJ.
+It is important to note that AspectJ follows Java's rule that annotations on interfaces are not inherited. This means that methods that define the Security annotations on the interface will not be secured. Instead, you must place the Security annotation on the class when using AspectJ.
 
 
 [[nsa-global-method-security-order]]
@@ -9696,7 +9696,7 @@ The LDAP filter used to search for users (optional). For example "(uid={0})". Th
 
 [[appendix-dependencies]]
 == Spring Security Dependencies
-This appendix provides a reference of the modules in Spring Security and the additional dependencies that they require in order to function in a running application. We don't include dependenices that are only used when building or testing Spring Security itself. Nor do we include transitive dependencies which are required by external dependencies.
+This appendix provides a reference of the modules in Spring Security and the additional dependencies that they require in order to function in a running application. We don't include dependencies that are only used when building or testing Spring Security itself. Nor do we include transitive dependencies which are required by external dependencies.
 
 The version of Spring required is listed on the project website, so the specific versions are omitted for Spring dependencies below. Note that some of the dependencies listed as"optional" below may still be required for other non-security functionality in a Spring application. Also dependencies listed as "optional" may not actually be marked as such in the project's Maven pom files if they are used in most applications. They are"optional" only in the sense that you don't need them unless you are using the specified functionality.
 
